@@ -1,7 +1,7 @@
 -- Database : `superapps`
 CREATE DATABASE IF NOT EXISTS `superapps`
   DEFAULT CHARACTER SET utf8 COLLATE utf8_bin;
-USE phpmyadmin;
+USE superapps;
 
 --
 -- Table structure for table `users`
