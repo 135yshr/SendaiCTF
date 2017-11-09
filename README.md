@@ -1,16 +1,20 @@
 # Sendai CTF 2017 Web problem
 
 ## How to use
+### Install docker compose
+
+[Please read this page](https://docs.docker.com/compose/install/#install-compose)
+
 ### Start process
 
 ```
-docker run -p 80:80 -v $PWD/src:/var/www/html --name php -d php:5.6-apache
-docker run --name mysql -e MYSQL_ROOT_PASSWORD=rtquLMJjHhRh -d mysql:5.7
+docker-compose build
+docker-compose up -d
 ```
 
 ### Stop process
 
 ```
-docker rm -f php
+docker-compose stop
 ```
 
