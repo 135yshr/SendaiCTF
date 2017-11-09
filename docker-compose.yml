@@ -1,0 +1,22 @@
+#mysql
+mysql:
+  image: mysql:5.7
+  volumes:
+    - ${PWD}/sql:/docker-entrypoint-initdb.d
+  ports:
+    - "3306:3306"
+  environment:
+    MYSQL_ROOT_PASSWORD: rtquLMJjHhRh
+    MYSQL_DATABASE: main
+    MYSQL_USER: ctfmaster
+    MYSQL_PASSWORD: P6aFpgTiZc94
+
+#php-apache
+php:
+  image: php:5.6-apache
+  volumes:
+    - ${PWD}/src:/var/www/html
+  ports:
+    - "80:80"
+  links:
+    - mysql:mysql
