@@ -16,7 +16,7 @@ if (isset($_POST["login"])) {
     }
 
     if (!empty($_POST["userid"]) && !empty($_POST["password"])) {
-        $userid = $_POST["userid"];
+        $userid = filter_input(INPUT_POST, 'userid');
         $dsn = sprintf('mysql:host=%s;dbname=%s;charset=utf8', $db['host'], $db['dbname']);
         
         try {
@@ -25,7 +25,7 @@ if (isset($_POST["login"])) {
             $stmt = $pdo->prepare('SELECT * FROM users WHERE name = ?');
             $stmt->execute(array($userid));
 
-            $password = $_POST["password"];
+            $password = filter_input(INPUT_POST, 'password');
 
             if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 if (password_verify($password, $row['password'])) {
