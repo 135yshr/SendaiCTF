@@ -13,12 +13,8 @@ require_logined_session();
         <h1>世界一すごい製品</h1>
         <ul>
             <?php if ($_SESSION['username'] === 'admin'): ?>
-            <li>
-                <a href="/admin.php?token=<?=h(generate_token())?>">管理者ページ</a>
-            </li>
-            <li>
-                <a href="/flag.php?token=<?=h(generate_token())?>&key=OCr61v0yaFqYS">FLAG</a>
-            </li>
+            <li><a href="/users.php?token=<?=h(generate_token())?>">ユーザー管理</a></li>
+            <li><a href="/flag.php?token=<?=h(generate_token())?>&key=OCr61v0yaFqYS">FLAG</a></li>
             <?php endif; ?>
             <li><a href="/logout.php?token=<?=h(generate_token())?>">ログアウト</a></li>
         </ul>
