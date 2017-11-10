@@ -13,7 +13,7 @@ function get_password($user)
     try {
         $pdo = new PDO($dsn, $db['user'], $db['pass'], array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION));
 
-        $stmt = $pdo->prepare('SELECT * FROM users WHERE name = ?');
+        $stmt = $pdo->prepare('SELECT * FROM users WHERE name = ? and delete_date=NULL');
         $stmt->execute(array($userid));
 
         if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
