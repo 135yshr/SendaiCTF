@@ -22,11 +22,6 @@ function get_password($user)
             return '';
         }
     } catch (PDOException $e) {
-        // $errorMessage = 'データベースエラー';
-        //$errorMessage = $sql;
-        // $e->getMessage() でエラー内容を参照可能（デバック時のみ表示）
-        // echo $e->getMessage();
-        // $errorMessage = $e->getMessage();
         return '';
     }
 }
@@ -57,7 +52,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header("Location: /");
         exit;
     } else {
-        $_SESSION['username'] = $username . ":" . $password;
         $errorMessage = 'ユーザーIDあるいはパスワードに誤りがあります。';
     }
 }
