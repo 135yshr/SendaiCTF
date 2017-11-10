@@ -14,6 +14,7 @@ require_logined_session();
         <ul>
             <?php if ($_SESSION['username'] === 'admin'): ?>
             <li><a href="/users.php?token=<?=h(generate_token())?>">ユーザー管理</a></li>
+            <li><a href="/phpMyAdmin">データベース管理</a></li>
             <li><a href="/flag.php?token=<?=h(generate_token())?>&key=OCr61v0yaFqYS">FLAG</a></li>
             <?php endif; ?>
             <li><a href="/logout.php?token=<?=h(generate_token())?>">ログアウト</a></li>

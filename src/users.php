@@ -52,17 +52,16 @@ header('Content-Type: text/html; charset=UTF-8');
         <tr>
             <th>No</th>
             <th>ユーザー名</th>
-            <th>パスワード</th>
+            <th>メモ</th>
         </tr>
         <?php foreach ($all as $row) : ?>
             <tr>
                 <td><?=h($row['id'])?></td>
                 <td><?=h($row['name'])?></td>
-                <td><?=h($row['password'])?></td>
+                <td><?=h($row['memo'])?></td>
             </tr>
         <?php endforeach; ?>
         </table>
         <div><?=h($sql)?></div>
     </body>
 </html>
-

@@ -37,14 +37,13 @@ USE phpmyadmin;
 --
 
 CREATE TABLE IF NOT EXISTS `pma__bookmark` (
-  `id` int(10) unsigned NOT NULL auto_increment,
-  `dbase` varchar(255) NOT NULL default '',
-  `user` varchar(255) NOT NULL default '',
-  `label` varchar(255) COLLATE utf8_general_ci NOT NULL default '',
-  `query` text NOT NULL,
-  PRIMARY KEY  (`id`)
-)
-  COMMENT='Bookmarks'
+  `id` int(5) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(20) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `password` varchar(100) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `memo` text COLLATE utf8_bin,
+  `delete_date` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) COMMENT='Bookmarks'
   DEFAULT CHARACTER SET utf8 COLLATE utf8_bin;
 
 -- --------------------------------------------------------

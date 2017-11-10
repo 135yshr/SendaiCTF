@@ -18,3 +18,6 @@ docker-compose up -d
 docker-compose stop
 ```
 
+## TODO
+1. ログテーブルを作成する
+2. ログテーブルにデータを登録する
