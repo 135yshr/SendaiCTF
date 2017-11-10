@@ -37,23 +37,25 @@ $errorMessage = "";
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = filter_input(INPUT_POST, 'userid');
     $password = filter_input(INPUT_POST, 'password');
+    $token = filter_input(INPUT_POST, 'token');
 
-    if (empty($_POST["userid"])) {
+    if (empty($username)) {
         $errorMessage = 'ユーザーIDが未入力です。';
         exit;
     }
-    if (empty($_POST["password"])) {
+    if (empty($password)) {
         $errorMessage = 'パスワードが未入力です。';
         exit;
     }
-    if (login($username, $password)) {
-        session_regenerate_id(true);
-        $_SESSION['username'] = $username;
-        header("Location: /");
-        exit;
-    } else {
+    if (!validate_token($token)) {
+        $errorMessage = '不正なトークンです。';
+    }
+    if (!login($username, $password)) {
         $errorMessage = 'ユーザーIDあるいはパスワードに誤りがあります。';
     }
+    session_regenerate_id(true);
+    $_SESSION['username'] = $username;
+    header("Location: /");
 }
 
 header('Content-Type: text/html; charset=UTF-8');
@@ -71,12 +73,12 @@ header('Content-Type: text/html; charset=UTF-8');
         <form method="POST" action="">
             <fieldset>
                 <legend>ログインフォーム</legend>
-                <div>session=<?=h($_SESSION['username'])?></div>
                 <div><font color="#ff0000"><?php echo htmlspecialchars($errorMessage, ENT_QUOTES); ?></font></div>
                 <label for="username">ユーザーID</label><input type="text" id="userid" name="userid" placeholder="ユーザーIDを入力" value="<?php if (!empty($_POST["userid"])) {echo htmlspecialchars($_POST["userid"], ENT_QUOTES);} ?>">
                 <br>
                 <label for="password">パスワード</label><input type="password" id="password" name="password" value="" placeholder="パスワードを入力">
                 <br>
+                <input type="hidden" name="token" value="<?=h(generate_token())?>">
                 <input type="submit" value="ログイン">
             </fieldset>
         </form>

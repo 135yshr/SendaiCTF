@@ -11,6 +11,9 @@ require_logined_session();
     </head>
     <body>
         <h1>世界一すごい製品</h1>
+        <ul>
+            <li><a href="/logout.php?token=<?=h(generate_token())?>">ログアウト</a></li>
+        </ul>
     </body>
 </html>
 
