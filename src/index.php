@@ -1,10 +1,6 @@
 <?php
-session_start();
-
-if (isset($_SESSION["NAME"])) {
-    header("Location: /login.php");
-    exit;
-}
+require_once __DIR__ . '/session_functions.php';
+require_logined_session();
 ?>
 
 <!doctype html>
